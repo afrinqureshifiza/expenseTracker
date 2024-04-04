@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="submitHandler(event)">
+        <label for="">
+            Choose Expense Amount:
+            <input type="number" name="amount" id="amount">
+        </label>
+        <label for="">
+            Choose Description:
+            <input type="text" name="description" id="description">
+        </label>
+        <label for="">
+            Select a Category:
+            <select name="text" id="category">
+                <option value="fuel">Fuel</option>
+                <option value="food">Food</option>
+                <option value="movie">Movie</option>
+                <option value="electricity">Electricity</option>
+            </select>
+        </label>
+        <button type="submit">Add Expense</button>
+    </form>
+    <button id="rzp-button">Buy Premium</button>
+
+
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <p id="errorpara" style="display: none; color: red;"></p>
+    <ul id="expenselist"></ul>
+    <div id="paginationdiv"></div>
+
+    <div id="premiumFeature" style="display: none;">
+      <p id="premiumpara" style="color: rgb(255, 170, 1);">You are Premium user now</p>
+      <button id="show-leaderboard">Show Leaderboard</button>  
+      <button id="download">Download File</button>
+    </div>
+
+    <ul id="leaderBoard" style="display: none;">
+        <h2>Leader Board</h2>
+    </ul>
+
+    <ul id="downloadedfile" style="display: none;">
+        <h2>List of Downloaded Files:</h2>
+    </ul>
+    
+    <script src="/expense.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

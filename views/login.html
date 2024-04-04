@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="submitHandler(event)">
+        <label for="">
+            Enter your email:
+            <input type="email" name="email" id="email">
+        </label>
+        <label for="">
+            Enter your password:
+            <input type="password" name="password" id="password">
+        </label>
+        <button type="submit">Login</button>
+    </form>
+    <button id="forget-pwd">Forgot password</button>
+    <a href="/user/show-signupform">NewUser- Signup Now!!</a>
+    <p id="loginerror"  style="display: none; color: red;"></p>
+    <script src="/login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js" integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
