@@ -12,7 +12,7 @@ function submitHandler(event){
         password:password
     }
 
-    axios.post(`http://localhost:3000/user/login`, obj)
+    axios.post(`/user/login`, obj)
     .then((response)=>{
         errorP.style.display='none'
          alert(response.data.message)

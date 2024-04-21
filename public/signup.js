@@ -7,7 +7,7 @@ function submitHandler(event){
         password: document.getElementById('password').value,
     }
 
-    axios.post('http://localhost:3000/user/signup', obj)
+    axios.post('/user/signup', obj)
     .then((res)=>{
         const errorP = document.getElementById('signuperror')
         errorP.style.display='none'

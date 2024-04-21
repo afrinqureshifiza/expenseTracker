@@ -9,7 +9,7 @@ function forgotpassword(e){
     }
     
     
-    axios.post('http://localhost:3000/password/forgotpassword',obj)
+    axios.post('/password/forgotpassword',obj)
     .then((response)=>{
         console.log(response)
     })

@@ -28,7 +28,7 @@ exports.retrivepassword=async (req,res)=>{
 
       const sender={
         email:'fizaafrinqureshi@gmail.com',
-        name:'Afrin'
+        name:'From Afrin Qureshi Pvt. Ltd'
       }
 
       const reciever=[
@@ -42,7 +42,7 @@ exports.retrivepassword=async (req,res)=>{
         to:reciever,
         subject:'Reset Password Email !!!',
         htmlContent:`<h4>This is an email to reset your password ,click on the link below to reset</h4>
-        <a href='http://localhost:3000/password/resetpassword/${newid}'>click here</a>`
+        <a href='${process.env.WEBSITE}/password/resetpassword/${newid}'>click here</a>`
       })
       .then((msg)=>{
         console.log(msg)

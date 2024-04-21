@@ -22,7 +22,7 @@ function submitHandler(event){
     const token = localStorage.getItem('token')
     console.log(token)
 
-    axios.post('http://localhost:3000/expense/add-expense', obj,{headers:{'Authorisation':token}})
+    axios.post('/expense/add-expense', obj,{headers:{'Authorisation':token}})
     .then(response=>{
       errorP.style.display='none'
       console.log(response.data.exp)
@@ -47,7 +47,7 @@ function addExpensetoUI(expense){
 
 function deleteExpense(event,id){
     const token = localStorage.getItem('token')
-    axios.delete(`http://localhost:3000/expense/delete-expense/${id}`, {headers: {'Authorisation': token}})
+    axios.delete(`/expense/delete-expense/${id}`, {headers: {'Authorisation': token}})
     .then(response=>{
         errorP.style.display='none'
         console.log(response.data.message)
@@ -75,12 +75,12 @@ function parseJwt (token) {
 }
 
 
-
+//buy premium
 document.getElementById('rzp-button').addEventListener('click',(e)=>{
     const token = localStorage.getItem('token')
     console.log(token)
 
-    axios.get('http://localhost:3000/purchase/premiummembership',{ headers: {'Authorisation': token}})
+    axios.get('/purchase/premiummembership',{ headers: {'Authorisation': token}})
     .then(response=>{
         console.log('paymentid',response.razorpay_payment_id)
         let options={
@@ -88,7 +88,7 @@ document.getElementById('rzp-button').addEventListener('click',(e)=>{
             "key":response.data.key_id,
 
             "handler":(response)=>{
-                axios.post('http://localhost:3000/purchase/updateTransactionStatus',{
+                axios.post('/purchase/updateTransactionStatus',{
                     order_id:options.order_id,
                     payment_id: response.razorpay_payment_id
                 }, {headers: {'Authorisation': token}})
@@ -111,7 +111,7 @@ document.getElementById('rzp-button').addEventListener('click',(e)=>{
 
         rzp.on('payment.failed', (response)=>{
             alert('Premium membership failed')
-            axios.post('http://localhost:3000/purchase/failedpremiummembership',{
+            axios.post('/purchase/failedpremiummembership',{
                 order_id:options.order_id,
              }, {headers: {'Authorisation': token}})
              .then(()=>{
@@ -132,7 +132,7 @@ function showUsersOnLeaderBoard(){
     const ul = document.getElementById('leaderBoard')
     ul.style.display='block'
     console.log(ul)
-    axios.get('http://localhost:3000/premium/showLeaderBoard')
+    axios.get('/premium/showLeaderBoard')
     .then(response=>{
         console.log(response.data.userExpenses)
         errorP.style.display='none'
@@ -150,7 +150,7 @@ function showUsersOnLeaderBoard(){
 //download expenses
 document.getElementById('download').addEventListener('click', (e)=>{
     const token = localStorage.getItem('token')
-    axios.get('http://localhost:3000/expense/download', {headers: {'Authorisation': token}})
+    axios.get('/expense/download', {headers: {'Authorisation': token}})
     .then(response=>{
         errorP.style.display='none'
         console.log(response)
@@ -269,7 +269,7 @@ function showPagination({
 
 function listexpenses(page){
     const rowsperpage = localStorage.getItem('rowsperpage')|| 5
-    axios.get(`http://localhost:3000/expense/show-expense?page=${page}`,{ headers: {'Authorisation' : token, 'rowsperpage':rowsperpage }})
+    axios.get(`/expense/show-expense?page=${page}`,{ headers: {'Authorisation' : token, 'rowsperpage':rowsperpage }})
     .then((response)=>{
         console.log(response.data)
         errorP.style.display='none'
